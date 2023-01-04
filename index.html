@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/reset.css">
+    <link rel="stylesheet" href="style/helper.css">
+    <link rel="stylesheet" href="style/style.css">
+    <title>Counter</title>
+</head>
+<body>
+    <div class="modal-bg"></div>
+    <form class="modal">
+        <h2>Bienvenue !</h2>
+        <p>Choisissez un score à atteindre</p>
+        <input type="number" name="score" id="score" min="0">
+        <span>ou</span>
+        <p>Souhaitez-vous aussi inscrire un temps imparti ?</p>
+        <div class="time-div">
+            <div class="input">
+                <input type="number" name="" id="minutes" min="0">
+                <label for="minutes">minutes</label>
+            </div>
+            <div class="input">
+                <input type="number" name="" id="seconds" min="0">
+                <label for="seconds">secondes</label>
+            </div>
+        </div>
+        <button>Valider</button>
+    </form>
+
+    <div class="game">
+        <div class="team1">
+            0
+        </div>
+        <div class="team2">
+            0
+        </div>
+    </div>
+    <div class="timer-card">
+        <p></p>
+        <span class="timer">00:00:000</span>
+    </div>
+    <button class="start">Commencer</button>
+    <button class="reset">Rejouer</button>
+
+    <script src="script/main.js"></script>
+</body>
+</html>

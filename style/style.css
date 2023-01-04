@@ -1,0 +1,223 @@
+/* permanent-marker-regular - latin */
+@font-face {
+	font-family: 'Permanent Marker';
+	font-style: normal;
+	font-weight: 400;
+	src: local(''),
+		 url('../fonts/permanent-marker-v16-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+		 url('../fonts/permanent-marker-v16-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* roboto-regular - latin */
+@font-face {
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 400;
+	src: local(''),
+		 url('../fonts/roboto-v30-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+		 url('../fonts/roboto-v30-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+  /* roboto-700 - latin */
+@font-face {
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 700;
+	src: local(''),
+		 url('../fonts/roboto-v30-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+		 url('../fonts/roboto-v30-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+:root {
+	--color1: #E9EDC9;
+	--color2: #D9B491;
+	--white: #FFF;
+
+	--modale: var(--white);
+	--team1: var(--color1);
+	--team2: var(--color2);
+}
+
+body {
+	font-family: 'Permanent Marker', sans-serif;
+	/* letter-spacing: .3rem; */
+}
+
+.modal-bg {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(45, 45, 45, 0.3);
+	z-index: 5;
+}
+
+.modal {
+	position: absolute;
+	background-color: var(--modale);
+	height: 100%;
+	max-height: 55.2rem;
+	width: 100%;
+	max-width: 35.8rem;
+	border-radius: 1rem;
+	box-shadow: .4rem .4rem 1rem rgba(0, 0, 0, 0.25);
+	z-index: 10;
+	left: calc(50% - 17.9rem);
+	top: calc(50% - 27.6rem);
+	padding: 4rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+}
+
+@media (min-width: 768px) {
+	.modal {
+		max-width: 55.2rem;	
+		max-height: 55.2rem;
+		left: calc(50% - 27.6rem);
+	}
+}
+
+.modal p,
+.modal label {
+	font-family: Roboto, sans-serif;
+	font-size: 1.8rem;
+}
+
+.modal p {
+	align-self: flex-start;
+}
+
+.modal #score {
+	width: 27.5rem;
+	height: 4.5rem;
+}
+
+.modal span {
+	font-family: 'Permanent Marker', sans-serif;
+	font-size: 4rem;
+}
+
+.modal .time-div {
+	display: flex;
+	gap: 2rem;
+}
+
+.modal .time-div input {
+	width: 4.5rem;
+	height: 4.5rem;
+}
+
+.modal button {
+	width: 23rem;
+	height: 6.4rem;
+	padding: 1rem 6rem;
+	font-size: 3rem;
+	background: var(--team1);
+	border-radius: 5px;
+	border: none;
+}
+
+.game {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+}
+
+.team1,
+.team2 {
+	width: 100vw;
+	height: 50vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 13rem;
+	cursor: pointer;
+}
+
+.team1 {
+	background-color: var(--team1);
+}
+
+.team2 {
+	background-color: var(--team2);
+}
+
+@media (min-width: 768px) {
+	.team1,
+	.team2 {
+		font-size: 20rem;
+	}
+}
+
+.timer-card {
+	position: absolute;
+	width: 100vw;
+	left: calc(50% - 50vw);
+	height: 100%;
+	max-height: 10rem;
+	top: calc(50% - 5rem);
+	text-align: center;
+}
+
+.timer-card p {
+	font-family: Roboto, sans-serif;
+	font-size: 2.2rem;
+	text-transform: uppercase;
+}
+
+.timer-card span {
+	font-size: 5rem;
+}
+
+@media (min-width: 768px) {
+	.timer-card {
+		position: absolute;
+		width: 100%;
+		max-width: 40rem;
+		top: 8rem;
+		left: calc(50% - 20rem);
+		text-align: center;
+	}	
+
+	.timer-card span {
+		font-size: 6rem;
+	}
+}
+
+.start, 
+.reset {
+	position: absolute;
+	width: 23rem;
+	height: 6.4rem;
+	bottom: 2rem;
+	left: calc(50% - 11.5rem);
+	font-size: 3rem;
+	border: none;
+	border-radius: .5rem;
+}
+
+.reset {
+	display: none;
+}
+
+@media (min-width: 768px) {
+	.start,
+	.reset {
+		bottom: 12rem;
+	}
+}
+
+
+@media (orientation: landscape) {
+	.game {
+		display: flex;
+		flex-direction: row;
+	}
+
+	.team1,
+	.team2 {
+		width: 50vw;
+		height: 100vh;
+	}
+  }
