@@ -10,25 +10,33 @@
     <title>Counter</title>
 </head>
 <body>
-    <div class="modal-bg"></div>
-    <form class="modal">
-        <h2>Bienvenue !</h2>
-        <p>Choisissez un score à atteindre</p>
-        <input type="number" name="score" id="score" min="0">
-        <span>ou</span>
-        <p>Souhaitez-vous aussi inscrire un temps imparti ?</p>
-        <div class="time-div">
-            <div class="input">
-                <input type="number" name="" id="minutes" min="0">
-                <label for="minutes">minutes</label>
+    <div class="modal-bg">
+        <form class="modal">
+            <h2>Bienvenue !</h2>
+            <p>Choisissez un score à atteindre</p>
+            <input type="number" name="score" id="score" min="0">
+            <span>ou</span>
+            <p>Souhaitez-vous aussi inscrire un temps imparti ?</p>
+            <div class="time-div">
+                <div class="input">
+                    <input type="number" name="" id="minutes" min="0">
+                    <label for="minutes">minutes</label>
+                </div>
+                <div class="input">
+                    <input type="number" name="" id="seconds" min="0">
+                    <label for="seconds">secondes</label>
+                </div>
             </div>
-            <div class="input">
-                <input type="number" name="" id="seconds" min="0">
-                <label for="seconds">secondes</label>
-            </div>
+            <button>Valider</button>
+        </form>
+        <div class="confirm">
+            <h2>PAUSE !</h2>
+            <p>Etes-vous certain de vouloir stopper la partie ?</p>
+            <button id="confirm-true">OUI</button>
+            <button id="confirm-false">NON</button>
         </div>
-        <button>Valider</button>
-    </form>
+    </div>
+
 
     <div class="game">
         <div class="team1">
@@ -42,6 +50,11 @@
         <p></p>
         <span class="timer">00:00:000</span>
     </div>
+
+    <div id="return-t1" data-value="team1"></div>
+    <div id="return-t2" data-value="team2"></div>
+    <img src="image/close.svg" alt="" id="close">
+
     <button class="start">Commencer</button>
     <button class="reset">Rejouer</button>
 

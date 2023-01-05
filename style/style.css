@@ -41,6 +41,10 @@ body {
 	/* letter-spacing: .3rem; */
 }
 
+button {
+	appearance: none;
+}
+
 .modal-bg {
 	position: absolute;
 	top: 0;
@@ -51,11 +55,11 @@ body {
 	z-index: 5;
 }
 
-.modal {
+.modal,
+.confirm {
 	position: absolute;
 	background-color: var(--modale);
-	height: 100%;
-	max-height: 55.2rem;
+
 	width: 100%;
 	max-width: 35.8rem;
 	border-radius: 1rem;
@@ -64,10 +68,37 @@ body {
 	left: calc(50% - 17.9rem);
 	top: calc(50% - 27.6rem);
 	padding: 4rem;
+}
+
+.modal {	
+	height: 100%;
+	max-height: 55.2rem;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
+}
+
+.confirm {
+	display: none;
+	height: 100%;
+	max-height: 25.2rem;
+	text-align: center;
+}
+
+.confirm p {
+	font-family: Roboto, sans-serif;
+	margin-block: 1.5rem;
+}
+
+.confirm button {
+	width: 10rem;
+	height: 6.4rem;
+	font-size: 3rem;
+	background: var(--team1);
+	border-radius: 5px;
+	border: none;
+	margin-inline: 1rem;
 }
 
 @media (min-width: 768px) {
@@ -150,6 +181,19 @@ body {
 	}
 }
 
+@media (orientation: landscape) {
+	.game {
+		display: flex;
+		flex-direction: row;
+	}
+
+	.team1,
+	.team2 {
+		width: 50vw;
+		height: 100vh;
+	}
+}
+
 .timer-card {
 	position: absolute;
 	width: 100vw;
@@ -189,9 +233,10 @@ body {
 .reset {
 	position: absolute;
 	width: 23rem;
-	height: 6.4rem;
-	bottom: 2rem;
 	left: calc(50% - 11.5rem);
+	height: 6.4rem;
+	/* top: calc(50% - 3.2rem); */
+	bottom: 2rem;
 	font-size: 3rem;
 	border: none;
 	border-radius: .5rem;
@@ -208,16 +253,44 @@ body {
 	}
 }
 
+#return-t1,
+#return-t2,
+#close {
+	position: absolute;
+}
 
-@media (orientation: landscape) {
-	.game {
-		display: flex;
-		flex-direction: row;
-	}
+#return-t1,
+#return-t2 {
+	width: 3rem;
+	height: 3rem;
+	background-image: url("../image/return.svg");
+	background-size: cover;
+}
 
-	.team1,
-	.team2 {
-		width: 50vw;
-		height: 100vh;
-	}
-  }
+#return-t1 {
+	top: 2rem;
+	left: 2rem;
+}
+
+#return-t2 {
+	bottom: 2rem;
+	right: 2rem;
+}
+
+#return-t1::after,
+#return-t2::after {
+	position: absolute;
+	content: '-1';
+	left: 100%;
+	top: 50%;
+}
+
+#close {
+	top: 2rem;
+	right: 2rem;
+}
+
+/* .modal-bg,
+.modal {
+	display: none;
+} */

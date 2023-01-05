@@ -1,5 +1,6 @@
 const modalBackground = document.querySelector(".modal-bg");
 const modalForm = document.querySelector(".modal");
+const modalConfirm = document.querySelector(".confirm");
 const scoreInput = document.querySelector("#score");
 const secondeInput = document.querySelector("#seconds");
 const minuteInput = document.querySelector("#minutes");
@@ -10,6 +11,11 @@ const t2Div = document.querySelector(".team2");
 const startButton = document.querySelector(".start");
 const resetButton = document.querySelector(".reset");
 const timerButton = document.querySelector(".timer");
+const returnT1Button = document.querySelector("#return-t1");
+const returnT2Button = document.querySelector("#return-t2");
+const cancelButton = document.querySelector("#close");
+const confirmTrueButton = document.querySelector("#confirm-true");
+const confirmFalseButton = document.querySelector("#confirm-false");
 
 let targetScore = 0;
 let limitSecond = 0;
@@ -21,10 +27,36 @@ let int = null;
 
 modalForm.addEventListener("submit", runGame);
 
-t1Div.addEventListener("click", addPoint);
-t2Div.addEventListener("click", addPoint);
+if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+    t1Div.addEventListener("touchstart", addPoint);
+    t2Div.addEventListener("touchstart", addPoint);
+} else {
+    t1Div.addEventListener("click", addPoint);
+    t2Div.addEventListener("click", addPoint);
+}
+
 startButton.addEventListener("click", start);
 resetButton.addEventListener("click", reset);
+cancelButton.addEventListener("click", () => {
+    pause();
+    modalBackground.style.display = "block";
+    modalConfirm.style.display = "block";
+});
+
+returnT1Button.addEventListener("click", removePoint);
+returnT2Button.addEventListener("click", removePoint);
+
+confirmTrueButton.addEventListener("click", () => {
+    modalBackground.style.display = "none";
+    modalConfirm.style.display = "none";
+    stop();
+});
+confirmFalseButton.addEventListener("click", () => {
+    modalBackground.style.display = "none";
+    modalConfirm.style.display = "none";
+    start();
+});
+
 
 function runGame(ev) {
     ev.preventDefault();
@@ -57,6 +89,11 @@ function start(ev) {
     isPlaying = true;
 }
 
+function pause() {
+    clearInterval(int);
+    isPlaying = false;
+}
+
 function stop(ev) {
     clearInterval(int);
     isPlaying = false;
@@ -73,8 +110,15 @@ function addPoint(ev) {
             stop();
         }
     }
+}
 
-
+function removePoint(ev) {
+    if (isPlaying) {
+        const scoreDiv = document.querySelector("."+ev.target.dataset.value);
+        currentScore = parseInt(scoreDiv.textContent);
+        newScore = currentScore - 1;
+        scoreDiv.textContent = newScore;
+    }
 }
 
 function reset(ev) {
