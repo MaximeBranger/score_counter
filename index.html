@@ -19,15 +19,16 @@
             <p>Souhaitez-vous aussi inscrire un temps imparti ?</p>
             <div class="time-div">
                 <div class="input">
-                    <input type="number" name="" id="minutes" min="0">
+                    <input type="number" name="" id="minutes" min="0" max="59">
                     <label for="minutes">minutes</label>
                 </div>
                 <div class="input">
-                    <input type="number" name="" id="seconds" min="0">
+                    <input type="number" name="" id="seconds" min="0" max="59">
                     <label for="seconds">secondes</label>
                 </div>
             </div>
-            <button>Valider</button>
+            <button id="validate">Valider</button>
+            <button class="credit" type="button">Crédits</button>
         </form>
         <div class="confirm">
             <h2>PAUSE !</h2>
@@ -35,16 +36,23 @@
             <button id="confirm-true">OUI</button>
             <button id="confirm-false">NON</button>
         </div>
+        <div class="credits">
+            <h2>Crédits</h2>
+            <h3>Une idée de ...</h3>
+            <p>Vincent Péchon</p>
+            <h3>Un design de ...</h3>
+            <p>Marie Bonjour</p>
+            <h3>Une réalisation de ...</h3>
+            <p>Maxime Branger</p>
+            <p class="copyright"> &copy; 2023</p>
+            <button>Merci</button>
+        </div>
     </div>
 
 
     <div class="game">
-        <div class="team1">
-            0
-        </div>
-        <div class="team2">
-            0
-        </div>
+        <div class="team1" data-score="0"></div>
+        <div class="team2" data-score="0"></div>
     </div>
     <div class="timer-card">
         <p></p>
