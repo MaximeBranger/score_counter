@@ -28,6 +28,13 @@ let isPlaying = false;
 let [milliseconds,seconds,minutes] = [0,0,0];
 let int = null;
 
+const localParams = JSON.parse(localStorage.getItem("params"));
+if (localParams !== null) {
+    scoreInput.value = localParams[0];
+    minuteInput.value = localParams[1];
+    secondeInput.value = localParams[2];
+}
+
 modalForm.addEventListener("submit", runGame);
 
 if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
@@ -99,6 +106,8 @@ function runGame(ev) {
         return;
     }
 
+    localStorage.setItem("params", JSON.stringify([targetScore, limitMinute, limitSecond]));
+
     if (limitSecond > 0 || limitMinute > 0) {
         [milliseconds,seconds,minutes] = [0,limitSecond,limitMinute];
     }
@@ -131,12 +140,7 @@ function stop(ev) {
 }
 
 function addPoint(ev) {
-    console.log(ev);
     if (isPlaying) {
-        // currentScore = parseInt(ev.target.textContent);
-        // newScore = currentScore + 1;
-        // ev.target.textContent = newScore;
-
         currentScore = parseInt(ev.target.dataset.score);
         newScore = currentScore + 1;
         ev.target.dataset.score = newScore;
@@ -150,9 +154,6 @@ function addPoint(ev) {
 function removePoint(ev) {
     if (isPlaying) {
         const scoreDiv = document.querySelector("."+ev.target.dataset.value);
-        // currentScore = parseInt(scoreDiv.textContent);
-        // newScore = currentScore - 1;
-        // scoreDiv.textContent = newScore;
 
         currentScore = parseInt(scoreDiv.dataset.score);
         newScore = currentScore - 1;
